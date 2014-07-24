@@ -36,41 +36,34 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	private void testShare() {
-//		// ShareData使用内容分享类型分享类型
+		// ShareData使用内容分享类型分享类型
 		ShareData shareData = new ShareData();
-//		shareData.isAppShare = false;
-		shareData.setTitle("滴滴打车分享");
-		shareData.setDescription("抢滴滴红包，赶回家看球~");
-		shareData.setText("滴滴打车给我11个红包，分你1个，打车回家看球吧。 ");
-		shareData.setTarget_url("http://www.xiaojukeji.com/");
-		shareData.setImageUrl("http://file.bmob.cn/M00/02/B4/wKhkA1OuzHeATJ5KAAAMie-ZImI961.jpg");
-//		shareData.setImagePath(Environment.getExternalStorageDirectory()+"/youtui/default.png");
+		shareData.setTitle("Bmob分享");
+		shareData.setDescription("Bmob社会化分享功能");
+		shareData.setText("Bmob提供的多平台社会化分享功能，目前支持QQ、QQ空间、微信、微信朋友圈、腾讯微博、新浪微博、人人网平台的分享功能。 ");
+		shareData.setTarget_url("http://www.codenow.cn/");
+		shareData.setImageUrl("http://assets3.chuangyepu.com/system/startup_contents/logos/000/003/395/medium/data.jpeg");
+		
 		BMShareListener whiteViewListener = new BMShareListener() {
 
 			@Override
 			public void onSuccess() {
-//				YtLog.e("--onSuccess--", error.getErrorMessage());
-				Log.d("bmob", "分享成功");
-				Toast.makeText(MainActivity.this, "分享成功", Toast.LENGTH_SHORT).show();
+				tost("分享成功");
 			}
 
 			@Override
 			public void onPreShare() {
-				Log.d("bmob", "开始分享");
-				Toast.makeText(MainActivity.this, "开始分享", Toast.LENGTH_SHORT).show();
+				tost("开始分享");
 			}
 
 			@Override
 			public void onError(ErrorInfo error) {
-//				YtLog.e("--onError--", error.getErrorMessage());
-				Log.d("bmob", "分享失败"+error.getErrorMessage());
-				Toast.makeText(MainActivity.this, "分享失败", Toast.LENGTH_SHORT).show();
+				tost("分享失败"+error.getErrorMessage());
 			}
 
 			@Override
 			public void onCancel() {
-				Log.d("bmob", "取消分享");
-				Toast.makeText(MainActivity.this, "取消分享", Toast.LENGTH_SHORT).show();
+				tost("取消分享");
 			}
 
 		};
@@ -86,6 +79,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		share.addListener(BMPlatform.PLATFORM_QZONE, whiteViewListener);
 		share.show();
 		Log.d("bmob", "分享end");
+	}
+	
+	private void tost(String msg){
+		Log.d("bmob", msg);
+		Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
 	}
 
 }
